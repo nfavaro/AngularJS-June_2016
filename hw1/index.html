@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js"></script>
+		<script src="app.js"></script>
+
+		<link rel="stylesheet" type="text/css" href="css.css">
+	</head>
+	<body ng-app="ThemeApp" ng-controller="ThemeController as ctrl"
+        ng-class="ctrl.selectedTheme">
+        <div class="wrapper">
+            <h3>Theme Selector</h3>
+            <input type="radio"
+                id="default"
+                name="themeSelector"
+                ng-value="ctrl.defaultTheme"
+                ng-model="ctrl.selectedTheme">
+            <label for="default">Default</label>
+            <input type="radio" 
+                id="red"
+                name="themeSelector"
+                ng-value="ctrl.redTheme"
+                ng-model="ctrl.selectedTheme">
+            <label for="red">Red</label>
+            <input type="radio" 
+                id="blue"
+                name="themeSelector"
+                ng-value="ctrl.blueTheme"
+                ng-model="ctrl.selectedTheme">
+            <label for="blue">Blue</label>
+            <input type="radio" 
+                id="yellow"
+                name="themeSelector"
+                ng-value="ctrl.yellowTheme"
+                ng-model="ctrl.selectedTheme">
+            <label for="yellow">Yellow</label>
+            <input type="radio" 
+                id="green"
+                name="themeSelector"
+                ng-value="ctrl.greenTheme"
+                ng-model="ctrl.selectedTheme">
+            <label for="green">Green</label>
+            <div class="top">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut sit.
+            </div>
+            <div class="bottom">
+                Quisque at nibh eu nisi pharetra aliquam sed vel mi.
+            </div>
+        </div>
+        <!-- USING ngRepeat -->
+        <div class="wrapper">
+            <h3>Test using ngRepeat</h3>
+            <span ng-repeat="(label, theme) in ctrl.themes">
+            <input type="radio"
+                id="repeated{{label|lowercase}}"
+                name="repeatedThemeSelector"
+                ng-value="theme"
+                ng-model="ctrl.selectedTheme">
+            <label for="repeated{{label|lowercase}}" ng-bind="label"></label>
+            </span>
+        </div>
+	</body>
+</html>

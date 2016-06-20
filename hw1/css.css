@@ -1,0 +1,105 @@
+/* Common */
+body {
+    max-width: 800px;
+    font-family: sans-serif;
+}
+
+.wrapper {
+    margin-bottom: 50px;
+}
+
+.wrapper div {
+    padding: 10px;
+    border: 1px solid;
+    border-radius: 10px;
+    margin: 10px 0;
+}
+
+
+/* Default Theme */
+.defaultTheme {
+    background-color: white;
+}
+
+.defaultTheme .top {
+    background-color: silver;
+    color: black;
+}
+
+.defaultTheme .bottom {
+    background-color: gray;
+    color: black;
+}
+
+
+/* Red Theme */
+.redTheme {
+    background-color: red;
+}
+
+.redTheme .top {
+    background-color: lightpink;
+    color: red;
+    border-color: darkred;
+}
+
+.redTheme .bottom {
+    background-color: lightsalmon;
+    color: red;
+    border-color: darkred;
+}
+
+
+/* Blue Theme */
+.blueTheme {
+    background-color: blue;
+}
+
+.blueTheme .top {
+    background-color: lightblue;
+    color: blue;
+    border-color: darkblue;
+}
+
+.blueTheme .bottom {
+    background-color: lightskyblue;
+    color: blue;
+    border-color: darkblue;
+}
+
+
+/* Yellow Theme */
+.yellowTheme {
+    background-color: yellow;
+}
+
+.yellowTheme .top {
+    background-color: gold;
+    color: yellow;
+    border-color: white;
+}
+
+.yellowTheme .bottom {
+    background-color: darkgoldenrod;
+    color: yellow;
+    border-color: white;
+}
+
+
+/* Green Theme */
+.greenTheme {
+    background-color: green;
+}
+
+.greenTheme .top {
+    background-color: chartreuse;
+    color: green;
+    border-color: darkgreen;
+}
+
+.greenTheme .bottom {
+    background-color: darkseagreen;
+    color: green;
+    border-color: darkgreen;
+}
+
