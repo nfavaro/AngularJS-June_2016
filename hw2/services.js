@@ -7,10 +7,7 @@ module.factory('Folder', function() {
     }
 
     Folder.prototype.addFile = function(...files) {
-        this.files = this.files || [];
-        for (file of files) {
-            this.files.push(file);
-        }
+        (this.files = this.files || []).push(...files);
     };
 
     return Folder;

@@ -10,12 +10,11 @@
     <div ng-controller="FolderController as ctrl">
         <div style="width: 50%; float: left">
             <h3>Folders</h3>
-            <input type="checkbox" ng-model="ctrl.expandAll" id="expand">
-            <label for="expand">Expand All</label>
+            <label><input type="checkbox" ng-model="ctrl.expandAll" id="expand">Expand All</label>
             <div ng-repeat="folder in ctrl.folders">
                 <h5 ng-bind="folder.name"></h5>
                 <ul ng-show="ctrl.expandAll">
-                    <li ng-repeat="file in folder.files track by $index"><span ng-bind="file"></span></li>
+                    <li ng-repeat="file in folder.files track by $index" ng-bind="file"></li>
                 </ul>
             </div>
         </div>
@@ -23,8 +22,10 @@
             File Name: <input type="text" ng-model="ctrl.newFile">
             <button ng-click="ctrl.selectedFolder.addFile(ctrl.newFile)" ng-disabled="!ctrl.selectedFolder">Add File</button>
             <span ng-repeat="folder in ctrl.folders"><br>
-                <input type="radio" ng-model="ctrl.selectedFolder" ng-value="folder" id="{{folder}}">
-                <label for="{{folder}}" ng-bind="folder.name"></label>
+                <label>
+                    <input type="radio" ng-model="ctrl.selectedFolder" ng-value="folder">
+                    <span ng-bind="folder.name"></span>
+                </label>
             </span>
         </div>
         <div style="width: 50%; padding-top: 400px">
@@ -32,12 +33,9 @@
             Name: <input type="text" ng-model="ctrl.taskName"><br>
             Description: <input type="text" ng-model="ctrl.taskDescription"><br>
             Priority:<br>
-            <input type="radio" ng-model="ctrl.taskPriority" ng-value="'high'" id="high">
-            <label for="high">High</label><br>
-            <input type="radio" ng-model="ctrl.taskPriority" ng-value="'medium'" id="medium">
-            <label for="medium">Medium</label><br>
-            <input type="radio" ng-model="ctrl.taskPriority" ng-value="'low'" id="low">
-            <label for="low">Low</label><br>
+            <label><input type="radio" ng-model="ctrl.taskPriority" ng-value="'high'"> High</label><br>
+            <label><input type="radio" ng-model="ctrl.taskPriority" ng-value="'medium'"> Medium</label><br>
+            <label><input type="radio" ng-model="ctrl.taskPriority" ng-value="'low'" id="low"> Low</label><br>
             <button 
                 ng-click="ctrl.todoList.addTodo(ctrl.taskName, ctrl.taskDescription, ctrl.taskPriority)"
                 ng-disabled="!ctrl.taskName||!ctrl.taskDescription||!ctrl.taskPriority">Add Todo</button>
