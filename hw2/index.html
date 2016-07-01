@@ -35,7 +35,7 @@
             Priority:<br>
             <label><input type="radio" ng-model="ctrl.taskPriority" ng-value="'high'"> High</label><br>
             <label><input type="radio" ng-model="ctrl.taskPriority" ng-value="'medium'"> Medium</label><br>
-            <label><input type="radio" ng-model="ctrl.taskPriority" ng-value="'low'" id="low"> Low</label><br>
+            <label><input type="radio" ng-model="ctrl.taskPriority" ng-value="'low'"> Low</label><br>
             <button 
                 ng-click="ctrl.todoList.addTodo(ctrl.taskName, ctrl.taskDescription, ctrl.taskPriority)"
                 ng-disabled="!ctrl.taskName||!ctrl.taskDescription||!ctrl.taskPriority">Add Todo</button>
