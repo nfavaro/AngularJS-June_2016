@@ -1,0 +1,29 @@
+Good Job Nick! Look good man, some notes below.
+
+- Good job on using ng-repeat for the folder radio buttons.
+	<span ng-repeat="folder in ctrl.folders"><br>
+	    <label>
+	        <input type="radio" ng-model="ctrl.selectedFolder" ng-value="folder">
+	        <span ng-bind="folder.name"></span>
+	    </label>
+	</span>
+
+- Nice use of eS6 with the (...files), be careful with this on different browsers.
+
+- You want to avoid this kind of logic in the html...
+	
+	ng-disabled="!ctrl.taskName||!ctrl.taskDescription||!ctrl.taskPriority"
+
+	you can define a property in your model and update its value when the other properties change using the ng-change directive.
+
+
+ - For radio buttons, if you just want to use a hard-coded value you can just value instead of ng-value
+
+ 	<input type="radio" ng-model="ctrl.taskPriority" ng-value="'high'">
+
+ 	becomes
+
+ 	<input type="radio" ng-model="ctrl.taskPriority" value="high">
+
+
+ Overall Great Job.
