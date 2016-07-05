@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css.css">
+
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js"></script>
+    <script src="services.js"></script>
+    <script src="app.js"></script>
+</head>
+<body ng-app="AssignmentApp">
+<div ng-controller="AssignmentController as ctrl" class="container">
+    <div class="row">
+        <div class="col-xs-12">
+        <h3>Student Information</h3>
+        <hr>
+        <form class="form-inline">
+            <input type="text" placeholder="Assignment" class="form-control" 
+                    ng-model="ctrl.newName"
+                    ng-change="ctrl.addButtonToggle()"> 
+            <input type="number" placeholder="Score" class="form-control" 
+                    ng-model="ctrl.newScore"
+                    ng-change="ctrl.addButtonToggle()">
+            <button class="btn btn-default"
+                    ng-click="ctrl.addAssignment()"
+                    ng-disabled="ctrl.addButtonDisabled">Add</button>
+        </form>
+        <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6">
+            <h3>Assignments</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Assignment Name</th>
+                        <th>Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="assignment in ctrl.assignmentList.assignments">
+                        <td><span ng-bind="assignment.name"></span> 
+                            (<a href="" ng-click="ctrl.removeAssignment($index)">delete</a>)
+                        </td>
+                        <td><span ng-bind="assignment.score"></span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="col-xs-6">
+        <h3>Stats</h3>
+        <table class="table">
+            <tr>
+                <td>Average:</td>
+                <td><span ng-bind="ctrl.stats.average|number:2"></span></td>
+            </tr>
+            <tr>
+                <td>Grade:</td>
+                <td><span ng-bind="ctrl.stats.grade"></span></td>
+            </tr>
+            <tr>
+                <td>Passed:</td>
+                <td><span ng-bind="ctrl.stats.passed"></span></td>
+            </tr>
+        </table>
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+</body>
+</html>
