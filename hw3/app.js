@@ -23,7 +23,7 @@ angular.module('AssignmentApp', ['AssignmentServices'])
     };
 
     self.addButtonToggle = function () {
-        self.addButtonDisabled = !self.newName || self.newScore === undefined;
+        self.addButtonDisabled = !self.newName || self.newScore == undefined;
     };
 
     function updateStats() {
