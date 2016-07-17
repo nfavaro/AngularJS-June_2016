@@ -1,0 +1,9 @@
+Great job Nick, some notes below:
+
+- Nice use of ES6 :)
+- I would make the average/grade/pass part of the AssignmentList factory.  These properties could be used by other parts of the application.
+- Be careful when using self.assignmentList.removeAssignment(index); when passing the index from the html.  It works in this case, but there will be cases we'll talk about when it doesn't work
+	An alternative is to pass the assignmnet and calculate the index using indexOf
+	eg var index = this.assignments.indexOf(myAssignment);
+
+- Good job!

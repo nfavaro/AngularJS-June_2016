@@ -1,0 +1,18 @@
+
+
+- good job on waiting until the end to generate the list of songs.
+- for objects that don't have any functions on the prototype, it's a little overkill to generate a factory.
+
+	eg: 
+	.factory('Song', function () {
+	    function Song(title) {
+	        this.title = title;
+	    }
+
+	    return Song;
+	})
+
+	I would just use the standard object creation syntax:
+		{
+			title: title
+		}
