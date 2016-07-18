@@ -13,8 +13,7 @@
     clearResults();
 
     self.updateResults = function (searchTerm) {
-      if (!searchTerm || searchTerm === "") return clearResults();
-
+      if (!searchTerm) return clearResults();
       MainControllerService.getMapResults(searchTerm).then(parseAddresses, console.error);
     };
 
