@@ -1,0 +1,38 @@
+<div class="container">
+
+
+
+  <div class="jumbotron">
+    <h1></h1>
+    <p>Pick a news source to browse</p>
+    <!--<p class="animated infinite" ng-class="main.classAnimation">
+      <button type="button" class="btn btn-lg btn-success" ng-click="main.showToastr()">Splendid Toastr</button>
+    </p>
+    <p>
+      With ♥ thanks to the contributions of<acme-malarkey extra-values="['Yeoman', 'Gulp', 'Angular']"></acme-malarkey>
+    </p>-->
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3" ng-repeat="source in mainCtrl.sources">
+      <div class="thumbnail">
+        <div class="pull-right">
+          <a ui-sref="source({ sourceId: source.id })">
+            <img ng-src="{{ source.urlsToLogos.small }}" alt="{{ source.name }}">
+          </a>
+        </div>
+        <p ng-bind="source.description"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="navbar navbar-fixed-bottom navbar-inverse">
+    <div class="container">
+      <p class="collapse navbar-collapse navbar-text">&copy;2016 Nicolas Favaro</p>
+      <p class="navbar-text navbar-right">
+        powered by <a target="_blank" href="https://newsapi.org/">NewsAPI.org</a>
+      </p>
+    </div>
+  </div>
+
+</div>
