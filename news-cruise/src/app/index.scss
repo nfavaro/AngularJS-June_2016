@@ -62,6 +62,57 @@ body {
   padding: 0.2em 0;
 }
 
+/*.thumbnail-container {
+  .ng-enter {
+    transition:0.5s linear all;
+    opacity:0;
+
+    .ng-enter-active {
+      opacity:1;
+    }
+  }
+
+  // now the element will fade out before it is removed from the DOM 
+  .ng-leave {
+    transition:0.5s linear all;
+    opacity:1;
+    .ng-leave-active {
+      opacity:0;
+    }
+  }
+}*/
+
+
+.thumbnail-container.ng-enter, .thumbnail-container.ng-move {
+  transition: 0.5s ease-in all;
+  opacity: 0;
+}
+
+.thumbnail-container.ng-enter-stagger {
+  transition-delay: 0.1s;
+  transition-duration: 0;
+}
+
+// The finishing CSS styles for the enter animation
+.thumbnail-container.ng-enter.ng-enter-active, .thumbnail-container.ng-move.ng-move-active {
+  opacity: 1;
+}
+
+// now the element will fade out before it is removed from the DOM 
+.thumbnail-container.ng-leave {
+  transition: 0.5s ease-in all;
+  opacity: 1;
+  //transform: translateY(0);
+}
+.thumbnail-container.ng-leave-stagger {
+  transition-delay: 0.1s;
+  transition-duration: 0;
+}
+.thumbnail-container.ng-leave.ng-leave-active {
+  opacity: 0;
+  //transform: translateY(-500px);
+}
+
 .thumbnail {
   height: 200px;
   padding: 1em;

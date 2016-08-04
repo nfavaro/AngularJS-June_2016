@@ -6,15 +6,38 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController(newsSources) {
+  function MainController(newsApiService, $interval) {
     var self = this;
-
+    
     fetchSources();
+    $interval(rotateImg, 300);
 
     function fetchSources() {
-      newsSources.getSources().then(function (response) {
-        self.sources = response.sources;
-      });
+      startSpinner();
+
+      newsApiService.getSources()
+        .then(function (data) {
+          self.sources = data;
+        })
+        .catch(handleError)
+        .finally(stopSpinner);
+    }
+
+    function handleError() {
+      self.apiCallFailed = true;
+    }
+
+    function rotateImg() {
+      var shifted = self.sources.shift();
+      self.sources.push(shifted);
+    }
+
+    function startSpinner() {
+      self.showSpinner = true;
+    }
+
+    function stopSpinner() {
+      self.showSpinner = false;
     }
   }
 })();

@@ -11,14 +11,20 @@
       .state('home', {
         url: '/',
         templateUrl: 'app/main/main.html',
-        controller: 'MainController as mainCtrl'
+        controller: 'MainController',
+        controllerAs: 'mainCtrl'
       })
 
       .state('source', {
         url: '/source/:sourceId',
-        template: '<p>Hello</p>',
-        controller: function () {
-
+        templateUrl: 'app/sources/sources.html',
+        controller: 'SourcesController',
+        controllerAs: 'sourcesCtrl',
+        resolve: {
+          /** @ngInject */
+          sources: function (newsApiService, $stateParams) {
+            return newsApiService.getSources($stateParams.sourceId);
+          }
         }
       })
 

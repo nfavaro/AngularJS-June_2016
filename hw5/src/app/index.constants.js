@@ -3,6 +3,6 @@
   'use strict';
 
   angular
-    .module('template')
+    .module('template');
 
 })();
