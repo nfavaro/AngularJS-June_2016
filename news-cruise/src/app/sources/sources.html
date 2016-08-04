@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="thumbnail-container col-xs-12 col-sm-6 col-md-4 col-lg-3" ng-repeat="source in sourcesCtrl.sources track by source.id">
+    <div class="thumbnail">
+      <div class="pull-right">
+        <a ui-sref="source({ sourceId: source.id })">
+          <img ng-src="{{ source.urlsToLogos.small }}" alt="{{ source.name }}">
+        </a>
+      </div>
+      <p ng-bind="source.description"></p>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div ng-repeat="article in sourcesCtrl.articles">
+        <span ng-bind="article.title"></span>
+      </div>
+    
+  </div>
+</div>
