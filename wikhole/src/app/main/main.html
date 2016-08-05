@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="col-xs-12">
+    <input ng-model="ctrl.searchTerm" placeholder="search"
+      uib-typeahead="article for article in ctrl.searchArticles($viewValue)"
+      typeahead-on-select="ctrl.getLinks(null, $item)">
+    <span class="badge" ng-bind="ctrl.numSearchResults"></span>
+    <span ng-if="ctrl.searchSuggestion">Did you mean <em ng-bind="ctrl.searchSuggestion"></em>?</span>
+    <span ng-bind="ctrl.links.length"></span>
+  </div>
+
+  <!-- <img ng-src="{{page.thumbnail.source}}" width="{{page.thumbnail.width}}" height="{{page.thumbnail.height}}"> -->
+  <div class="tileDiv" ng-repeat="page in ctrl.links" style="background-image:url({{page.thumbnail.source}})">
+    <a href="" ng-click="ctrl.getLinks(page.pageid)" 
+             ng-mouseover="page.show = true"
+             ng-mouseleave="page.show = false">
+      <div>
+        <span ng-bind="page.title"></span>
+      </div>
+    </a>
+  </a>
+  </span>
+</div>
