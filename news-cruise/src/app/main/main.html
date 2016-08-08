@@ -1,6 +1,6 @@
 <div class="jumbotron">
-  <h1></h1>
-  <p>Welcome</p>
+  <h1>Welcome</h1>
+  <h2><a href ui-sref='source'>Start Exploring the news!</a></h2>
   <!--<p class="animated infinite" ng-class="main.classAnimation">
     <button type="button" class="btn btn-lg btn-success" ng-click="main.showToastr()">Splendid Toastr</button>
   </p>
@@ -10,7 +10,7 @@
 </div>
 
 <div class="row">
-  <div class="xs-12">
+  <div class="col-xs-12">
     <div class="well" ng-hide="mainCtrl.apiCallFailed" style="height: 70px; overflow-y: scroll">
       <span us-spinner spinner-on="mainCtrl.showSpinner"></span>
       <ul style="white-space: nowrap">
@@ -21,6 +21,7 @@
     </div>
 
     <div ng-if="mainCtrl.apiCallFailed" class="alert alert-danger" role="alert">
+      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
       <strong>Sorry!</strong> Unable to connect to the API. Please try again later.
     </div>
   </div>

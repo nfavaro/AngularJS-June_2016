@@ -17,14 +17,11 @@
 
       .state('source', {
         url: '/source',
-        templateUrl: 'app/sources/sources.html',
+        templateUrl: 'app/routes/sources/sources.html',
         controller: 'SourcesController',
         controllerAs: 'sourcesCtrl',
         resolve: {
-          /** @ngInject */
-          sources: function (newsApiService) {
-            return newsApiService.getSources();
-          }
+          sources: resolveSources
         }
       })
 
@@ -33,17 +30,41 @@
         // Overrides ui-view in parent template
         views: {
           "@": {
-            templateUrl: 'app/sources/source.html',
+            templateUrl: 'app/routes/source/source.html',
             controller: 'SourceController',
             controllerAs: 'sourceCtrl'
           }
         }
+      })
 
+      .state('prefs', {
+        url: '/prefs',
+        templateUrl: 'app/routes/prefs/prefs.html',
+        controller: 'PrefsController',
+        controllerAs: 'prefsCtrl',
+        resolve: {
+          sources: resolveSources
+        }
+      })
+
+      .state('feed', {
+        url: '/feed',
+        templateUrl: 'app/routes/feed/feed.html',
+        controller: 'FeedController',
+        controllerAs: 'feedCtrl',
+        resolve: {
+          sources: resolveSources
+        }
       })
 
       ;
 
     $urlRouterProvider.otherwise('/');
+
+    /** @ngInject */
+    function resolveSources(newsApiService) {
+      return newsApiService.getSources();
+    }
   }
 
 })();

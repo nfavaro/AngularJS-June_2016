@@ -4,6 +4,6 @@
   angular
     .module('newsCruise', 
       ['ngAnimate', 'ngCookies', 'ngSanitize', 'ngMessages', 'ngResource', 
-      'ui.router', 'ui.bootstrap', 'toastr', 'angularSpinner', 'LocalStorageModule']);
+      'ui.router', 'ui.bootstrap', 'toastr', 'angularSpinner']);
 
 })();

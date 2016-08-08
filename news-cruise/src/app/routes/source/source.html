@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-4">
+    <div class="well well-lg">
+      <img ng-src="{{ sourceCtrl.source.urlsToLogos.medium }}" alt="sourceCtrl.source.name"
+            style="width: 100%;">
+      <br><br>
+      <p>
+        <span ng-bind="sourceCtrl.source.description"></span>
+        <a ng-href="{{ sourceCtrl.source.url }}" target="_blank"><span class="glyphicon glyphicon-new-window"></span></a>
+      </p>
+    </div>
+  </div>
+  <div class="col-xs-12 col-sm-8">
+    <span us-spinner spinner-on="sourceCtrl.showSpinner"></span>
+    <div class="panel panel-default">
+
+      <div class="panel-heading">
+        <div class="btn-group">
+          <button class="btn btn-info"
+                  ng-repeat="sortBy in sourceCtrl.source.sortBysAvailable"
+                  ng-class="{ active: sortBy == sourceCtrl.sortBy }"
+                  ng-click="sourceCtrl.fetchArticles(sortBy)"
+                  ng-bind="sortBy"></button>
+        </div>
+      </div>
+      <table class="table">
+        <tr ng-repeat="article in sourceCtrl.articles">
+          <td>
+            <a ng-href="{{ article.url }}" target="_blank"><span class="glyphicon glyphicon-new-window"></span></a>
+            <span ng-bind="article.title"></span>
+            <span class="label label-info pull-right" ng-bind="article.publishedAt|date:'short'"></span>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

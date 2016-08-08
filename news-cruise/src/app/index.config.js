@@ -6,17 +6,19 @@
     .config(config);
 
   /** @ngInject */
-  function config($logProvider, toastrConfig, usSpinnerConfigProvider) {
+  function config($logProvider, toastrConfig, usSpinnerConfigProvider, ncPrefsProvider) {
+    // Set pre-configured selections
+    var _prefs = { 
+        'bbcnews': true,
+        'entertainmentweekly': true,
+        'thehuffingtonpost': true
+    };
+    ncPrefsProvider.setPreConfigPrefs(_prefs);
+
     // Enable log
     $logProvider.debugEnabled(true);
 
-    // Set options third-party lib
-    toastrConfig.allowHtml = true;
-    toastrConfig.timeOut = 3000;
-    toastrConfig.positionClass = 'toast-top-right';
-    toastrConfig.preventDuplicates = true;
-    toastrConfig.progressBar = true;
-
+    // Spinner defaults
     usSpinnerConfigProvider.setDefaults({
       lines: 17 // The number of lines to draw
     , length: 0 // The length of each line

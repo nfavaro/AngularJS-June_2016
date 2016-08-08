@@ -55,6 +55,10 @@ body {
   font-family: 'Cookie', cursive;
 }
 
+.jumbotron {
+  text-align: center;
+}
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -62,66 +66,51 @@ body {
   padding: 0.2em 0;
 }
 
-/*.thumbnail-container {
-  .ng-enter {
-    transition:0.5s linear all;
-    opacity:0;
+.thumbnail-container {
+  &:hover {
+    z-index: 999;
+  }
+  &.ng-enter, &.ng-leave, &.ng-move {
+    transition: 0.5s ease-in all;
+  }
+  
+  // fade in on enter/move
+  &.ng-enter, &.ng-move {
+    opacity: 0;
 
-    .ng-enter-active {
-      opacity:1;
+    &.ng-enter-active, &.ng-move-active {
+      opacity: 1;
     }
   }
 
-  // now the element will fade out before it is removed from the DOM 
-  .ng-leave {
-    transition:0.5s linear all;
-    opacity:1;
-    .ng-leave-active {
-      opacity:0;
+  // fade in on leave
+  &.ng-leave {
+    opacity: 1;
+
+    &.ng-leave-active {
+      opacity: 0;
     }
   }
-}*/
 
-
-.thumbnail-container.ng-enter, .thumbnail-container.ng-move {
-  transition: 0.5s ease-in all;
-  opacity: 0;
+  &.ng-enter-stagger, &.ng-leave-stagger, &.ng-move-stagger {
+    transition-delay: 0.1s;
+    transition-duration: 0;
+  }
 }
 
-.thumbnail-container.ng-enter-stagger {
-  transition-delay: 0.1s;
-  transition-duration: 0;
-}
-
-// The finishing CSS styles for the enter animation
-.thumbnail-container.ng-enter.ng-enter-active, .thumbnail-container.ng-move.ng-move-active {
-  opacity: 1;
-}
-
-// now the element will fade out before it is removed from the DOM 
-.thumbnail-container.ng-leave {
-  transition: 0.5s ease-in all;
-  opacity: 1;
-  //transform: translateY(0);
-}
-.thumbnail-container.ng-leave-stagger {
-  transition-delay: 0.1s;
-  transition-duration: 0;
-}
-.thumbnail-container.ng-leave.ng-leave-active {
-  opacity: 0;
-  //transform: translateY(-500px);
-}
-
-.thumbnail {
+.thumbnail.thumbnail-sources {
   height: 200px;
   padding: 1em;
   overflow: hidden;
+  transition: 0.2s ease-in-out all;
 
+  // expand and darken on hover
   &:hover {
-    background: #eee;
+    transform: scale(1.1);
+    box-shadow: 0 0 40px 8px #999;
   }
 
+  // image
   div.pull-right {
     width: 75px;
     height: 75px;
@@ -129,6 +118,32 @@ body {
       width: 100%;
       padding-left: 3px;
       padding-bottom: 3px;
+    }
+  }
+}
+
+.thumbnail.thumbnail-prefs {
+  height: 3em;
+
+  &.selected, &:hover {
+    background: $btn-info-bg;
+    color: $btn-info-color;
+    border-color: $btn-info-border;
+  }
+
+  p {
+    margin-top: 0.5em;
+
+    input {
+      margin: 0 0.5em;
+    }
+  }
+
+  div.pull-right {
+    margin-top: 0.5em;
+    height: 100%;
+    img {
+      height: 50%;
     }
   }
 }
