@@ -6,29 +6,28 @@
     .controller('SourcesController', SourcesController);
 
   /** @ngInject */
-  function SourcesController(newsArticlesApiService, sources, $timeout, $stateParams) {
+  function SourcesController(newsArticlesApiService, sources, $timeout, $stateParams, $state) {
     var self = this;
 
     // Timeout to animate on load
     $timeout(fetchSources);
-    fetchArticles($stateParams.sourceId);
+
+    // State changer
+    self.goTo = function (sourceId) {
+      $state.go('source.single', { sourceId: sourceId });
+    };
 
     // Private function to fetch sources
     function fetchSources() {
       self.sources = sources;
-      console.log(self.sources);
     }
 
-    // Private function to fetch articles
-    function fetchArticles(source, sortBy) {
-      if (!source) return;
+    function startSpinner() {
+      self.showSpinner = true;
+    }
 
-      newsArticlesApiService.getArticles(source, sortBy)
-        .then(function (data) {
-          self.articles = data.articles;
-        })
-        // .catch(handleError)
-        // .finally(stopSpinner);
+    function stopSpinner() {
+      self.showSpinner = false;
     }
   }
 })();

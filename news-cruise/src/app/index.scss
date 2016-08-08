@@ -118,9 +118,18 @@ body {
   padding: 1em;
   overflow: hidden;
 
+  &:hover {
+    background: #eee;
+  }
+
   div.pull-right {
     width: 75px;
     height: 75px;
+    img {
+      width: 100%;
+      padding-left: 3px;
+      padding-bottom: 3px;
+    }
   }
 }
 

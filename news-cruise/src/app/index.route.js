@@ -16,16 +16,29 @@
       })
 
       .state('source', {
-        url: '/source/:sourceId',
+        url: '/source',
         templateUrl: 'app/sources/sources.html',
         controller: 'SourcesController',
         controllerAs: 'sourcesCtrl',
         resolve: {
           /** @ngInject */
-          sources: function (newsApiService, $stateParams) {
-            return newsApiService.getSources($stateParams.sourceId);
+          sources: function (newsApiService) {
+            return newsApiService.getSources();
           }
         }
+      })
+
+      .state('source.single', {
+        url: '/:sourceId',
+        // Overrides ui-view in parent template
+        views: {
+          "@": {
+            templateUrl: 'app/sources/source.html',
+            controller: 'SourceController',
+            controllerAs: 'sourceCtrl'
+          }
+        }
+
       })
 
       ;
