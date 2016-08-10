@@ -33,4 +33,10 @@
       <p><input type="checkbox" ng-model="prefsCtrl.prefs[source.id]" ng-change="prefsCtrl.savePreferences()"> <span ng-bind="source.name"></span></p>
     </label>
   </div>
+</div
+
+<div class="row">
+  <button ui-sref='feed' ng-if="prefsCtrl.showOptions" 
+          class="btn btn-lg btn-success col-xs-12 col-sm-offset-6 col-sm-6 col-md-offset-8 col-md-4 col-lg-offset-9 col-lg-3">Go to my feed <span class="glyphicon glyphicon-chevron-right"></span>
+  </button>
 </div>

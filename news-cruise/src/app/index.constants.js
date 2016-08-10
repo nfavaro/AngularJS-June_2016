@@ -17,7 +17,7 @@
     // .constant('malarkey', malarkey)
     // .constant('moment', moment);
 
-    .constant('API_END_POINTS', DEV_API_END_POINTS)
+    .constant('API_END_POINTS', PROD_API_END_POINTS)
     
     .constant('API_KEY', 'e61eec162e044c119205012fda4f4c45')
 

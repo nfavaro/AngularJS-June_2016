@@ -18,17 +18,13 @@
   function NavBarController(ncPrefs, $state) {
     var self = this;
 
-    checkLoggedIn();
+    self.checkLoggedIn = checkLoggedIn;
 
     function checkLoggedIn() {
       var _name = ncPrefs.getUsername();
       self.name = _name || "Sign Up";
       self.loggedIn = !!_name;
-    }
-
-    self.logIn = function () {
-      ncPrefs.setUsername("Nic");
-      checkLoggedIn();
+      return self.loggedIn;
     }
 
     self.clearPrefs = function () {

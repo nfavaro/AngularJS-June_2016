@@ -32,12 +32,13 @@
     // Private function to fetch preferences
     function fetchPreferences() {
       self.prefs = ncPrefs.getPrefs();
-      self.numPrefs = Object.keys(self.prefs).length - 2;
+      self.numPrefs = Object.keys(self.prefs).filter(function (k) { return self.prefs[k]===true}).length;
+      console.log(self.numPrefs);
     }
 
     function fetchArticles() {
       angular.forEach(self.prefs, function (_value, key) {
-        if (key === 'name' || key === 'email') return;
+        if (key === 'name' || key === 'email' || !_value) return;
         newsArticlesApiService.getArticles(key)
           .then(function (data) {
             data.articles.forEach(function (article) {

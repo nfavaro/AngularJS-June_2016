@@ -16,7 +16,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li ui-sref-active="active"><a href ui-sref="home">Home</a></li>
         <li ui-sref-active="active"><a href ui-sref="source">Sources</a></li>
-        <li ng-show="nbCtrl.loggedIn">
+        <li ng-show="nbCtrl.checkLoggedIn()">
           <button class="btn btn-info navbar-btn" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span ng-bind="nbCtrl.name"></span> <span class="caret"></span></button>
           <ul class="dropdown-menu">
             <li><a href ui-sref="feed"><span class="glyphicon glyphicon-list"></span> My Feed</a></li>
@@ -24,7 +24,7 @@
             <li><a href ng-click="nbCtrl.clearPrefs()" ui-sref="home"><span class="glyphicon glyphicon-remove"></span> Clear All</a></li>
           </ul>
         </li>
-        <li ng-hide="nbCtrl.loggedIn">
+        <li ng-hide="nbCtrl.checkLoggedIn()">
           <button ui-sref="prefs"
                   class="btn btn-info navbar-btn" ng-hide="nbCtrl.loggedIn">Sign up</button>
         </li>
