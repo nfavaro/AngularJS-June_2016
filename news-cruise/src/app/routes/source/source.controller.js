@@ -6,7 +6,7 @@
     .controller('SourceController', SourceController);
 
   /** @ngInject */
-  function SourceController(newsArticlesApiService, sources, $timeout, $stateParams) {
+  function SourceController(newsApiService, source, $timeout, $stateParams) {
     var self = this;
 
     getSource();
@@ -21,26 +21,25 @@
 
       startSpinner();
 
-      newsArticlesApiService.getArticles($stateParams.sourceId, sortBy)
-        .then(function (data) {
-          self.articles = data.articles;
+      newsApiService.getArticles($stateParams.sourceId, sortBy)
+        .then(function (articles) {
+          self.articles = articles;
         })
-        // .catch(handleError)
+        .catch(handleError)
         .finally(stopSpinner);
     }
 
-    // Private function to get selected source
+    // Get source
     function getSource() {
-      var i = 0, len = sources.length;
-      while (i < len) {
-        if (sources[i].id === $stateParams.sourceId) {
-          self.source = sources[i];
-          break;
-        }
-        i++;
-      }
+      self.source = source;
     }
 
+    // Error handler
+    function handleError() {
+      self.apiCallFailed = true;
+    }
+
+    // Start/stop spinner
     function startSpinner() {
       self.showSpinner = true;
     }

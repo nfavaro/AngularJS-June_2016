@@ -6,7 +6,7 @@
     .config(routerConfig);
 
   /** @ngInject */
-  function routerConfig($stateProvider, $urlRouterProvider) {
+  function routerConfig($stateProvider, $urlRouterProvider, newsApiServiceProvider) {
     $stateProvider
       .state('home', {
         url: '/',
@@ -15,6 +15,7 @@
         controllerAs: 'mainCtrl'
       })
 
+      // All sources
       .state('source', {
         url: '/source',
         templateUrl: 'app/routes/sources/sources.html',
@@ -25,8 +26,12 @@
         }
       })
 
+      // Single source
       .state('source.single', {
         url: '/:sourceId',
+        resolve: {
+          source: resolveSources
+        },
         // Overrides ui-view in parent template
         views: {
           "@": {
@@ -37,6 +42,7 @@
         }
       })
 
+      // Preferences view
       .state('prefs', {
         url: '/prefs',
         templateUrl: 'app/routes/prefs/prefs.html',
@@ -47,13 +53,15 @@
         }
       })
 
+      // Personal feed view
       .state('feed', {
         url: '/feed',
         templateUrl: 'app/routes/feed/feed.html',
         controller: 'FeedController',
         controllerAs: 'feedCtrl',
         resolve: {
-          sources: resolveSources
+          // gets sources as object
+          sources: newsApiServiceProvider.$get().getSourcesObject
         }
       })
 
@@ -61,9 +69,11 @@
 
     $urlRouterProvider.otherwise('/');
 
+    // Resolves all or selected source
     /** @ngInject */
-    function resolveSources(newsApiService) {
-      return newsApiService.getSources();
+    function resolveSources(newsApiService, $stateParams) {
+      var _id = $stateParams.sourceId;
+      return newsApiService.getSources(_id);
     }
   }
 

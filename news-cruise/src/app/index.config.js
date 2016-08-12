@@ -6,8 +6,8 @@
     .config(config);
 
   /** @ngInject */
-  function config($logProvider, toastrConfig, usSpinnerConfigProvider, ncPrefsProvider) {
-    // Set pre-configured selections
+  function config($logProvider, usSpinnerConfigProvider, ncPrefsProvider) {
+    // Set pre-configured preference selections
     var _prefs = { 
         'bbcnews': true,
         'entertainmentweekly': true,
@@ -18,7 +18,7 @@
     // Enable log
     $logProvider.debugEnabled(true);
 
-    // Spinner defaults
+    // angular-spinner defaults
     usSpinnerConfigProvider.setDefaults({
       lines: 17 // The number of lines to draw
     , length: 0 // The length of each line

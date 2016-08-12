@@ -6,7 +6,7 @@
     .controller('FeedController', FeedController);
 
   /** @ngInject */
-  function FeedController(sources, ncPrefs, $timeout, newsArticlesApiService) {
+  function FeedController(sources, ncPrefs, $timeout, newsApiService) {
     var self = this;
 
     self.feedProgress = 0;
@@ -17,45 +17,29 @@
     fetchPreferences();
     fetchArticles();
 
-    self.randNum = function () {
-      return Math.floor(Math.random() * 4) + 1;
-    }
-
-    // Private function to fetch sources
+    // Fetches sources
     function fetchSources() {
-      self.sources = {};
-      sources.forEach(function (source) {
-        self.sources[source.id] = source;
-      })
+      self.sources = sources;
     }
 
-    // Private function to fetch preferences
+    // Fetches preferences
     function fetchPreferences() {
       self.prefs = ncPrefs.getPrefs();
-      self.numPrefs = Object.keys(self.prefs).filter(function (k) { return self.prefs[k]===true}).length;
-      console.log(self.numPrefs);
+      self.numPrefs = Object.keys(self.prefs).filter(function (pref) { 
+        return self.prefs[pref] === true; 
+      }).length;
     }
 
+    // Fetches articles
     function fetchArticles() {
-      angular.forEach(self.prefs, function (_value, key) {
-        if (key === 'name' || key === 'email' || !_value) return;
-        newsArticlesApiService.getArticles(key)
+      angular.forEach(self.prefs, function (value, key) {
+        if (!value) return;
+        newsApiService.getArticles(key)
           .then(function (data) {
-            data.articles.forEach(function (article) {
-              article.sourceId = data.source;
-            })
-            self.articles = self.articles.concat(data.articles);
+            self.articles = self.articles.concat(data);
             self.feedProgress++;
           })
       })
-    }
-
-    function startSpinner() {
-      self.showSpinner = true;
-    }
-
-    function stopSpinner() {
-      self.showSpinner = false;
     }
   }
 })();

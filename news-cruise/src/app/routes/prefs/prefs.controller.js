@@ -16,33 +16,36 @@
     $timeout(fetchSources);
     fetchPreferences();
 
-    // Private function to fetch sources
+    // Fetches sources (from resolved)
     function fetchSources() {
       self.sources = sources;
     }
 
-    // Private function to fetch preferences
+    // Fetches preferences
     function fetchPreferences() {
       self.prefs = ncPrefs.getPrefs();
-      if (self.prefs.name) {
+      if (fetchDetails()) {
         self.showOptions = true;
         self.buttonText = 'Update';
       }
     }
 
-    // Private function to save preferences
+    // Fetches username and email and returns boolean value of success
+    function fetchDetails() {
+      return !!((self.username = ncPrefs.getUsername()) && (self.email = ncPrefs.getEmail()));
+    }
+
+    // Saves preferences
     function savePreferences() {
+      ncPrefs.setUsername(self.username);
+      ncPrefs.setEmail(self.email);
       ncPrefs.setPrefs(self.prefs);
       self.showOptions = true;
       self.buttonText = 'Update';
     }
 
-    function startSpinner() {
-      self.showSpinner = true;
-    }
-
-    function stopSpinner() {
-      self.showSpinner = false;
-    }
+    // for testing
+    self.fetchDetails = fetchDetails;
+    self.fetchPreferences = fetchPreferences;
   }
 })();

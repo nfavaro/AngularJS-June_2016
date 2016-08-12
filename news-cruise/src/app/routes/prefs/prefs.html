@@ -6,14 +6,14 @@
           <span ng-show="form.fName.$touched && form.fName.$invalid">Please enter your name</span>
         </label>
         <input class="form-control input-lg" type="text" placeholder="Full Name" name="fName"
-               ng-model="prefsCtrl.prefs.name" required>
+               ng-model="prefsCtrl.username" required>
       </div>
       <div class="form-group col-xs-3" ng-class="{'has-error': form.email.$touched && form.email.$invalid }">
         <label class="control-label"><span style="visibility: hidden">A</span>
           <span ng-show="form.email.$touched && form.email.$invalid">Invalid email address</span>
         </label>
         <input class="form-control input-lg" type="email" placeholder="Email" name="email"
-               ng-model="prefsCtrl.prefs.email" required> 
+               ng-model="prefsCtrl.email" required> 
       </div>
       <div class="form-group col-xs-3">
         <button type="submit" class="btn btn-lg" ng-click="prefsCtrl.savePreferences()"

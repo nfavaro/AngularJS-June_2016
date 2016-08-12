@@ -6,7 +6,7 @@
     .controller('SourcesController', SourcesController);
 
   /** @ngInject */
-  function SourcesController(newsArticlesApiService, sources, $timeout, $stateParams, $state) {
+  function SourcesController(sources, $timeout, $state) {
     var self = this;
 
     // Timeout to animate on load
@@ -17,17 +17,9 @@
       $state.go('source.single', { sourceId: sourceId });
     };
 
-    // Private function to fetch sources
+    // Fetches sources
     function fetchSources() {
       self.sources = sources;
-    }
-
-    function startSpinner() {
-      self.showSpinner = true;
-    }
-
-    function stopSpinner() {
-      self.showSpinner = false;
     }
   }
 })();

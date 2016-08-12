@@ -15,11 +15,12 @@
   }
 
   /** @ngInject */
-  function NavBarController(ncPrefs, $state) {
+  function NavBarController(ncPrefs) {
     var self = this;
 
     self.checkLoggedIn = checkLoggedIn;
 
+    // Checks if logged in and gets username
     function checkLoggedIn() {
       var _name = ncPrefs.getUsername();
       self.name = _name || "Sign Up";
@@ -27,6 +28,7 @@
       return self.loggedIn;
     }
 
+    // Clears all preferences
     self.clearPrefs = function () {
       ncPrefs.clearAll();
       checkLoggedIn();

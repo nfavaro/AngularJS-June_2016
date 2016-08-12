@@ -10,8 +10,10 @@
     var self = this;
     
     fetchSources();
+    // Rotates source images
     $interval(rotateImg, 300);
 
+    // Fetches sources from service
     function fetchSources() {
       startSpinner();
 
@@ -23,15 +25,18 @@
         .finally(stopSpinner);
     }
 
+    // Error handler
     function handleError() {
       self.apiCallFailed = true;
     }
 
+    // Rotates source images
     function rotateImg() {
       var shifted = self.sources.shift();
       self.sources.push(shifted);
     }
 
+    // Start/stop spinner
     function startSpinner() {
       self.showSpinner = true;
     }
